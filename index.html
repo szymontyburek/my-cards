@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="my-cards.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      style="display: flex; align-items: center; height: 95vh; overflow-x: auto"
+    >
+      <my-cards></my-cards>
+    </div>
+  </body>
+</html>
+<style>
+  /* to demonstrate DOM and Shadow DOM styles do not interfere with one another */
+  #card {
+    min-width: 1000vw;
+    max-width: 100000000vw;
+    border-radius: 10000000px;
+    padding: 2000000px;
+    margin: 20000000px;
+  }
+
+  p {
+    #card {
+      min-width: 25vw;
+      max-width: 50vw;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px;
+    }
+
+    p {
+      font-size: 0.75em;
+    }
+    font-size: 25em;
+  }
+</style>
+<script type="text/javascript">
+  document.querySelector("my-cards").init({
+    cards: [
+      {
+        title: "Card 1",
+        "background-color": "blue",
+        text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque suscipit
+      quaerat quam assumenda cumque voluptatibus inventore veniam recusandae
+      repudiandae perspiciatis, vitae maxime labore! Ab ad animi fugiat
+      praesentium maiores? Neque doloribus amet accusantium, non, inventore
+      quaerat hic, dignissimos consequatur velit recusandae rem officiis in
+      ipsam modi et eligendi cum ex impedit? Minima enim neque quisquam
+      molestias. Explicabo temporibus dignissimos quas odit officia fuga
+      similique, tenetur placeat nobis ut delectus consequatur asperiores
+      laborum voluptatibus inventore veniam natus in culpa sunt optio!`,
+      },
+    ],
+  });
+</script>
