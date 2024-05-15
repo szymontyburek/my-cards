@@ -6,30 +6,43 @@ class Cards extends HTMLElement {
   }
 
   connectedCallback() {
+    const container = document.createElement("div");
+    container.style.cssText =
+      "display: flex; align-items: center; overflow-x: auto";
+    this.shadowRoot.appendChild(container);
+
     //add media queries to the shadowDom
     const style = document.createElement("style");
-    style.textContent += ``;
+    style.textContent += `
+    #card {
+      min-width: 20vw;
+      max-width: 30vw;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px;
+    }
+
+    p {
+      font-size: 0.75em;
+    }
+    `;
     this.shadowRoot.appendChild(style);
 
     this.init = function (config) {
-      debugger;
-    };
+      for (const card of config.cards) {
+        const cardd = document.createElement("div");
+        cardd.setAttribute("id", "card");
+        container.appendChild(cardd);
+        cardd.style.cssText = card.styles;
 
-    const create_card = function () {
-      //     <div id="card" style="background-color: red">
-      //     <h3>Card 1</h3>
-      //     <p>
-      //       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam
-      //       accusantium possimus et, quasi beatae odit. Qui, maxime. Aperiam
-      //       assumenda sapiente quis unde nobis exercitationem amet nostrum
-      //       dolorem. Corrupti, quia architecto repellendus perferendis earum, sed
-      //       praesentium, ullam quae pariatur ipsum saepe? Animi dolorem iure quis
-      //       hic. Tempore illum hic qui deleniti, necessitatibus laboriosam nobis
-      //       quia nihil et dolorum amet velit consectetur ut sapiente a optio quasi
-      //       explicabo reprehenderit harum, provident totam nemo. Deleniti quas
-      //       impedit quos quia perspiciatis dolor earum magnam?
-      //     </p>
-      //   </div>
+        const title = document.createElement("h3");
+        title.innerHTML = card.title;
+        cardd.appendChild(title);
+
+        const text = document.createElement("p");
+        text.innerHTML = card.text;
+        cardd.appendChild(text);
+      }
     };
   }
 }
